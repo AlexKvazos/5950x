@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+const fetch = require('node-fetch');
+const c = require('colors');
+console.log(c.blue('Checking for availability of AMD Ryzen9 5950x\n'));
+
+fetch(
+  'https://www.bhphotovideo.com/c/product/1598372-REG/amd_100_100000059wof_ryzen_9_5950x_3_4.html?SID=trd-us-8254177155661554000'
+)
+  .then((res) => res.text())
+  .then((body) => {
+    const outOfStock = body.indexOf('Notify When Available') >= 0;
+    console.log(
+      'bhphotovideo -',
+      outOfStock
+        ? c.yellow('Item is out of stock')
+        : c.green('ITEM IS NOT OUT OF STOCK')
+    );
+  });
+
+fetch(
+  'https://www.newegg.com/amd-ryzen-9-5950x/p/N82E16819113663?Item=N82E16819113663'
+)
+  .then((res) => res.text())
+  .then((body) => {
+    const outOfStock = body.indexOf('SOLD OUT') >= 0;
+    console.log(
+      'newegg -',
+      outOfStock
+        ? c.yellow('Item is out of stock')
+        : c.green('ITEM IS NOT OUT OF STOCK')
+    );
+  });
+
+fetch('https://www.amazon.com/AMD-Ryzen-9-5950X/dp/B0815Y8J9N')
+  .then((res) => res.text())
+  .then((body) => {
+    const outOfStock = body.indexOf('Currently unavailable.') >= 0;
+    console.log(
+      'amazon -',
+      outOfStock
+        ? c.yellow('Item is out of stock')
+        : c.green('ITEM IS NOT OUT OF STOCK')
+    );
+  })
+  .catch((err) => console.error(err));

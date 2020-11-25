@@ -1,0 +1,21 @@
+{
+  "name": "5950x",
+  "version": "1.0.1",
+  "description": "Is the Amd Ryzen9 5950x Available?",
+  "main": "bin/5950x",
+  "bin": "bin/5950x",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexKvazos/5950x.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "node-fetch": "^2.6.1"
+  }
+}
